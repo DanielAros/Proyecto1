@@ -11,14 +11,16 @@ from cryptography.fernet import Fernet
 #Leer la clave
 llave = open('llave.key','rb')
 
+f = Fernet(key)
+
 #Mensaje a encriptar
-mensaje = 'Secreto no compartir con nadie mas'
-print('Mensaje a encriptar-->',mensaje)
-mensaje = mensaje.encode()
-print(mensaje)
+#mensaje = 'Secreto no compartir con nadie mas'
+#print('Mensaje a encriptar-->',mensaje)
+#mensaje = mensaje.encode()
+#print(mensaje)
 
 #Metodo Fernet
-f = Fernet(key)
+
 
 #Encriptar
 #encriptado = f.encrypt(mensaje)
