@@ -6,13 +6,15 @@ server.listen(1)
 
 print('Esperando')
 
+
 client_socket, client_address = server.accept()
 #---------------------------------------------
+#EMPIEZA A RECIBIR LA IMAGEN
 file = open('imagen_cop.jpg', 'wb')
 image_part = client_socket.recv(2048)
 print('Recibiendo')
 while image_part:
-    print('...')
+    # print('...')
     file.write(image_part)
     image_part = client_socket.recv(2048)
 
@@ -20,9 +22,12 @@ file.close()
 client_socket.close()
 print('Exito')
 
+#AQUÍ VA EL DESCIFRADO
+
 
 
 #---------------------------------------------
+#SE ENVIA LA IMAGEN YA DESCIFRADA
 client_socket, client_address = server.accept()
 print('Enviando')
 file = open('imagen_cop.jpg', 'rb')

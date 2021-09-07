@@ -2,7 +2,7 @@
 from cryptography.fernet import Fernet
 
 #Crear y guardar la llave
-#key = Fernet.generate_key()
+key = Fernet.generate_key()
 #print('Llave:',key)
 #with open('llave.key','wb') as archivo_key:
     #archivo_key.write(key)
