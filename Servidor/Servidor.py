@@ -28,17 +28,17 @@ client_socket.close()
 print('Exito')
 
 #AQUÍ VA EL DESCIFRADO
-def desencript():
-     file = open('imagen_cop.jpg', 'rb')
-     encrypted_file = file.read()
-     print(encrypted_file)
-     decrypted_file = f.decrypt(encrypted_file)
-     file.close()
-     file = open('imagen_cop.jpg', 'wb')
-     file.write(decrypted_file)
-     file.close()
+# def desencript():
+file = open('imagen_cop.jpg', 'rb')
+encrypted_file = file.read()
+#  print(encrypted_file)
+decrypted_file = f.decrypt(encrypted_file)
+file.close()
+file = open('imagen_cop.jpg', 'wb')
+file.write(decrypted_file)
+file.close()
      
-desencript()
+# desencript()
 #---------------------------------------------
 #SE ENVIA LA IMAGEN YA DESCIFRADA
 client_socket, client_address = server.accept()

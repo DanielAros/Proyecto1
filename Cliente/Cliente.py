@@ -28,13 +28,13 @@ file = open('imgOriginal.jpg', 'rb')
 archivo = file.read()
 encrypted_file = f.encrypt(archivo)
 file.close()
-file = open('imgOriginal.jpg', 'wb')
+file = open('imgOriginalEnc.jpg', 'wb')
 file.write(encrypted_file)
 file.close()
 
 # #Aquí enviamos la imagen encriptada
 print('Enviando')
-file = open('imgOriginal.jpg', 'rb')
+file = open('imgOriginalEnc.jpg', 'rb')
 image_data = file.read(2048)
 
 while image_data:
@@ -68,27 +68,27 @@ print('Exito')
 
 #AQUÍ VA LA COMPARACIÓN
 #---------------------------------------------
-# os.chdir('./Cliente')#Se posiciona en el directorio donde se encuentran las imagenes
+#os.chdir('./Cliente')#Se posiciona en el directorio donde se encuentran las imagenes
 
-# #Cargamos las imagenes a comparar, se pasa el nombre del archivo y el 1 es para leer la imagen a color
-# imagen1 = cv2.imread("imgOriginal.jpg",1)
-# imagen2 = cv2.imread("imagen_comparar.jpg.jpg",1)#Imagen descifrada
+#Cargamos las imagenes a comparar, se pasa el nombre del archivo y el 1 es para leer la imagen a color
+imagen1 = cv2.imread("imgOriginal.jpg",1)
+imagen2 = cv2.imread("imagen_cop.jpg",1)#Imagen descifrada
 
-# def comparar(img1,img2):
-#     diferencia = cv2.subtract(img1,img2)#Lee los arreglos de pixeles de cada imagen y los compara haciendo una resta.
-#     if not np.any(diferencia):
-#         print("Las imagenes son iguales")
-#         #Mostar las dos imagenes
-#         imas = np.hstack((imagen1,imagen2))#Toma las imagenes a visualizar de forma conjunta
-#         cv2.imshow("Photo", imas)
-#         cv2.waitKey(0)
-#     else:
-#         cv2.imwrite("img_diferencia.jpg",diferencia) #Se crea una imagen con las diferencias encontradas
-#         imagenDiferente = cv2.imread('img_diferencia.jpg')
-#         print("Las imagenes son distintas")
-#         #Mostar las imagenes
-#         ima = np.hstack((imagen1, imagenDiferente, imagen2))
-#         cv2.imshow("Photo", ima)
-#         cv2.waitKey(0)
+def comparar(img1,img2):
+    diferencia = cv2.subtract(img1,img2)#Lee los arreglos de pixeles de cada imagen y los compara haciendo una resta.
+    if not np.any(diferencia):
+        print("Las imagenes son iguales")
+        #Mostar las dos imagenes
+        imas = np.hstack((imagen1,imagen2))#Toma las imagenes a visualizar de forma conjunta
+        cv2.imshow("Photo", imas)
+        cv2.waitKey(0)
+    else:
+        cv2.imwrite("img_diferencia.jpg",diferencia) #Se crea una imagen con las diferencias encontradas
+        imagenDiferente = cv2.imread('img_diferencia.jpg')
+        print("Las imagenes son distintas")
+        #Mostar las imagenes
+        ima = np.hstack((imagen1, imagenDiferente, imagen2))
+        cv2.imshow("Photo", ima)
+        cv2.waitKey(0)
 
-# comparar(imagen1,imagen2)
+comparar(imagen1,imagen2)
